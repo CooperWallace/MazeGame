@@ -6,10 +6,8 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 
 public class GameStart implements ApplicationListener {
@@ -24,7 +22,6 @@ public class GameStart implements ApplicationListener {
 	MakeLevel Levelgen;
 	OverlayShadow ShadowSpotlight;
 	
-
 	@Override
 	public void create() {
 		cam = new OrthographicCamera();
@@ -38,36 +35,30 @@ public class GameStart implements ApplicationListener {
 		Levelgen = new MakeLevel(shap, Player1);
 			
 		ShadowSpotlight = new OverlayShadow();
-		
 	}
 
 	@Override
 	public void render() {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		// This updates our Rectangles and Sprites with the camera as it moves.
+		// This is important because neither of them would move with the camera without this.
 		batch.setProjectionMatrix(cam.combined);
+		shap.setProjectionMatrix(cam.combined);
 
 		//Draw the Player
 		Player1.DrawRectangle(shap);
 		
 		
-		// Moves the player around.
-		if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-			Player1.Left(Gdx.graphics.getDeltaTime());
-		}
-		if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-			Player1.Right(Gdx.graphics.getDeltaTime());
-		}
-		if (Gdx.input.isKeyPressed(Keys.UP)) {
-			Player1.Up(Gdx.graphics.getDeltaTime());
-		}
-		if (Gdx.input.isKeyPressed(Keys.DOWN)) {
-			Player1.Down(Gdx.graphics.getDeltaTime());
-		}
-
+		//Updates the Player1's movement with controls.
+		// This method controls the players movement and handles inputs
+		Player1.UpdateMovementControl(Gdx.graphics.getDeltaTime());
+		
 		// Updates the hitboxes with the players movement.
 		Player1.update();
-
+		
+		
 		// Updates the Level so that the player will register with the hitboxes.
 		// Without this the hitboxes wont work.
 		// This also renders the entire level. Without it there wwould be no
@@ -78,11 +69,17 @@ public class GameStart implements ApplicationListener {
 		// It's the spotlight effect that follows around the Player
 		// Check OverlayShadow for more information
 		ShadowSpotlight.UpdateOverlay(shap, batch, Player1);
-		
-		
-
+	
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub

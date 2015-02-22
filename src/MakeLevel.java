@@ -7,11 +7,18 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 
 public class MakeLevel {
-	
-
 	ArrayList<RectangleObj> list = new ArrayList<RectangleObj>();
 	
 	public MakeLevel(ShapeRenderer ShapRend, PlayerObj Player1){
+		/*
+		 * This class is sets the levels and renders the boundaries, boxes, etc.
+		 * 
+		 * Functions: - UpdateLevel: Renders each of the objects, and prevents
+		 * the user from overlapping them.
+		 * 
+		 * Incomplete: Needs a way to make multiple levels
+		 */
+		
 		
 
 		// Level Boundaries
@@ -32,7 +39,9 @@ public class MakeLevel {
 		}
 
 		// Checks each of the Rectangles to see if the Player hits them. If the
-		// player does hit them, this prevents it going through them.		
+		// player does hit them, this prevents it going through them.
+		// If the player hits them, it moves them in the opposite direction to
+		// prevent them from going inside of it.
 		for (RectangleObj obj : list) {
 			if (Player1.top.overlaps(obj.rec)) {
 				Player1.rec.y -= Player1.MoveRate * Gdx.graphics.getDeltaTime();
