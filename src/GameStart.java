@@ -21,10 +21,9 @@ public class GameStart implements ApplicationListener {
 	PlayerObj Player1;
 	ArrayList<RectangleObj> list = new ArrayList<RectangleObj>();
 
-	MakeLevel Levelgen = new MakeLevel();
-
-	Texture BG;
-	Sprite BGSprite;
+	MakeLevel Levelgen;
+	OverlayShadow ShadowSpotlight;
+	
 
 	@Override
 	public void create() {
@@ -36,11 +35,9 @@ public class GameStart implements ApplicationListener {
 
 		Player1 = new PlayerObj();
 		
-		Levelgen.MakeLevel(shap, Player1);
-		
-		BG = new Texture(Gdx.files.internal("Assets/DarkOverlay.png"));
-		BGSprite = new Sprite(BG, 112 , -250, 1024, 1024);
-		
+		Levelgen = new MakeLevel(shap, Player1);
+			
+		ShadowSpotlight = new OverlayShadow();
 		
 	}
 
@@ -50,20 +47,6 @@ public class GameStart implements ApplicationListener {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.setProjectionMatrix(cam.combined);
 
-		
-		shap.begin(ShapeType.Filled);
-		batch.begin();
-		BGSprite.setPosition(Player1.rec.x - 388, Player1.rec.y - 247 );
-		shap.rect(BGSprite.getX() - 1024, 0, 1024, 1024);
-		shap.rect(BGSprite.getX() + 1024, 0, 1024, 1024);
-
-		shap.rect(0, BGSprite.getY() + 1024, 1024, 1024);
-		shap.rect(0, BGSprite.getY() - 1024, 1024, 1024);
-		BGSprite.draw(batch);
-		batch.end();
-		shap.end();
-		
-		
 		//Draw the Player
 		Player1.DrawRectangle(shap);
 		
@@ -91,6 +74,11 @@ public class GameStart implements ApplicationListener {
 		// level
 		Levelgen.UpdateLevel(shap, Player1, Gdx.graphics.getDeltaTime());
 
+		// This is last because it needs to put an overlay over everything and not let anything appear over top of it.
+		// It's the spotlight effect that follows around the Player
+		// Check OverlayShadow for more information
+		ShadowSpotlight.UpdateOverlay(shap, batch, Player1);
+		
 		
 
 	}

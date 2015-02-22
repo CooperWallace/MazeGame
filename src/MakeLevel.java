@@ -11,7 +11,7 @@ public class MakeLevel {
 
 	ArrayList<RectangleObj> list = new ArrayList<RectangleObj>();
 	
-	public void MakeLevel(ShapeRenderer ShapRend, PlayerObj Player1){
+	public MakeLevel(ShapeRenderer ShapRend, PlayerObj Player1){
 		
 
 		// Level Boundaries
