@@ -73,7 +73,7 @@ public class PlayerObj {
 		// The "Delta" pass through is to move the player according to the FPS.
 
 		if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-			rec.x -= MoveRate * Delta;
+			rec.x -= MoveRate * Delta;	
 		}
 		if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
 			rec.x += MoveRate * Delta;

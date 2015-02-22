@@ -21,6 +21,7 @@ public class GameStart implements ApplicationListener {
 
 	MakeLevel Levelgen;
 	OverlayShadow ShadowSpotlight;
+	CameraTracking Camera;
 	
 	@Override
 	public void create() {
@@ -35,7 +36,8 @@ public class GameStart implements ApplicationListener {
 		Levelgen = new MakeLevel(shap, Player1);
 			
 		ShadowSpotlight = new OverlayShadow();
-	}
+		Camera = new CameraTracking(cam);
+	}	
 
 	@Override
 	public void render() {
@@ -58,7 +60,33 @@ public class GameStart implements ApplicationListener {
 		// Updates the hitboxes with the players movement.
 		Player1.update();
 		
-		
+		// Camera Tracking Debugging
+		// - When the player gets within a certain threshold of the side (Width
+		// or Height Divided by 3 in this case) the camera will adjust.
+		// Preventing the user from going off screen. This allows for levels
+		// larger than just the window size.
+
+		// Up and Down camera movement. If the player gets within 120 pixels of
+		// them it moves.
+		if ((Player1.rec.y) > (cam.position.y + cam.viewportHeight / 3)) {
+			Camera.MoveUp(Gdx.graphics.getDeltaTime());
+		}
+		if ((Player1.rec.y) < (cam.position.y - cam.viewportHeight / 3)) {
+			Camera.MoveDown(Gdx.graphics.getDeltaTime());
+		}
+
+		// Left Side Camera Tracking
+		if (Player1.rec.x > (cam.position.x + cam.viewportWidth / 2.5)) {
+			Camera.MoveLeft(Gdx.graphics.getDeltaTime());
+		}
+
+		// Right Side Camera Tracking
+		if (Player1.rec.x < (cam.position.x - cam.viewportWidth / 2.5)) {
+			Camera.MoveRight(Gdx.graphics.getDeltaTime());
+		}
+			
+			
+			
 		// Updates the Level so that the player will register with the hitboxes.
 		// Without this the hitboxes wont work.
 		// This also renders the entire level. Without it there wwould be no
@@ -68,8 +96,8 @@ public class GameStart implements ApplicationListener {
 		// This is last because it needs to put an overlay over everything and not let anything appear over top of it.
 		// It's the spotlight effect that follows around the Player
 		// Check OverlayShadow for more information
-		ShadowSpotlight.UpdateOverlay(shap, batch, Player1);
-	
+		//ShadowSpotlight.UpdateOverlay(shap, batch, Player1);
+		
 	}
 
 	

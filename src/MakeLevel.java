@@ -9,7 +9,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 public class MakeLevel {
 	ArrayList<RectangleObj> list = new ArrayList<RectangleObj>();
 	
-	public MakeLevel(ShapeRenderer ShapRend, PlayerObj Player1){
+	PlayerObj Player1;
+	
+	public MakeLevel(ShapeRenderer ShapRend, PlayerObj Player){
 		/*
 		 * This class is sets the levels and renders the boundaries, boxes, etc.
 		 * 
@@ -19,13 +21,33 @@ public class MakeLevel {
 		 * Incomplete: Needs a way to make multiple levels
 		 */
 		
+		Player1 = Player;
 		
+		Level1();
 
+	}
+	
+	public void ChangeLevel(int NewLevel){
+		list.clear();
+		
+		if(NewLevel == 1){Level1();}
+		
+		if(NewLevel == 2){}
+		
+		
+	}
+	
+	public void Level1(){
+		
+		// Set the players position on map load.
+		Player1.setposition(5, 5);
+		
 		// Level Boundaries
-		list.add(new RectangleObj(0, 0, 5, 480, Color.BLACK));
-		list.add(new RectangleObj(795, 0, 5, 480, Color.BLACK));
-		list.add(new RectangleObj(0, 0, 800, 5, Color.BLACK));
-		list.add(new RectangleObj(0, 475, 800, 5, Color.BLACK));
+				list.add(new RectangleObj(0, 0, 5, 480, Color.BLACK));
+				list.add(new RectangleObj(795, 0, 5, 480, Color.BLACK));
+				list.add(new RectangleObj(0, 0, 800, 5, Color.BLACK));
+				//list.add(new RectangleObj(0, 475, 800, 5, Color.BLACK));
+			
 	}
 	
 	

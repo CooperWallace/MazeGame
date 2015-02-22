@@ -47,9 +47,19 @@ public class OverlayShadow {
 		// These are to cover the places that are not covered by the Spotlight
 		// texture. This prevents there from being holes on all the sides. The
 		// offsets are to allow it to appear on all sides.
-		shap.rect(BGSprite.getX() - 1024, 0, 1024, 1024);
-		shap.rect(BGSprite.getX() + 256, 0, 1024, 1024);
+		// Note: Needs both X and Y to track the movements, otherwise when the
+		// camera moves the border wont follow
+
+		// Left Side Black Border - Height changed to prevent overlap of Y
+		shap.rect(BGSprite.getX() - 1024, BGSprite.getY(), 1024, 256);
+		
+		//Right Side Black Border - Height changed to prevent overlap of Y
+		shap.rect(BGSprite.getX() + 256, BGSprite.getY(), 1024, 256);
+		
+		// Top Black Border
 		shap.rect(0, BGSprite.getY() + 256, 1024, 1024);
+		
+		//Bottom Black Border
 		shap.rect(0, BGSprite.getY() - 1024, 1024, 1024);
 
 		// End the Rendering Sequence
