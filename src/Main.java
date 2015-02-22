@@ -6,10 +6,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
-		cfg.title = "Test";
+		cfg.title = "Maze v0.001";
 		cfg.useGL20 = false;
 		cfg.width = 800;
 		cfg.height = 480;
+		cfg.resizable = false;
 				
 		new LwjglApplication(new GameStart(), cfg);
 		
