@@ -1,3 +1,5 @@
+import Objects.PlayerObj;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -34,7 +36,7 @@ public class OverlayShadow {
 		// Begin the Rendering Sequence
 		shap.begin(ShapeType.Filled);
 		batch.begin();
-
+		
 		// The reason there are offsets to the X and Y coordinates is to make
 		// sure that the Spotlight is centered on the player
 		// Without the offsets the spotlight texture would be rendered in the
@@ -43,7 +45,7 @@ public class OverlayShadow {
 		// Without this it wouldn't move, and it would sit in one single spot.
 		BGSprite.setPosition(Player1.rec.x - 116, Player1.rec.y - 114);
 		BGSprite.draw(batch);
-
+		
 		// These are to cover the places that are not covered by the Spotlight
 		// texture. This prevents there from being holes on all the sides. The
 		// offsets are to allow it to appear on all sides.

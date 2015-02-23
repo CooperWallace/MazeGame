@@ -1,3 +1,4 @@
+package Objects;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
@@ -6,9 +7,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 
 public class PlayerObj {
-	Rectangle rec;
-	Rectangle top, bottom, left, right;
-	int MoveRate;
+	public Rectangle rec;
+	public Rectangle top, bottom, left, right;
+	public int MoveRate;
 
 	/*
 	 * This class renders, updates, and controls the movements of the Player.

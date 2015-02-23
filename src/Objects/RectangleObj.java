@@ -1,10 +1,11 @@
+package Objects;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 
 public class RectangleObj {
-	Rectangle rec;
+	public Rectangle rec;
 	Color ShapColor;
 
 	public RectangleObj(int x, int y, int width, int height, Color color) {

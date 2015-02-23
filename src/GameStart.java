@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 
+import Objects.PlayerObj;
+import Objects.RectangleObj;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -21,7 +22,6 @@ public class GameStart implements ApplicationListener {
 
 	MakeLevel Levelgen;
 	OverlayShadow ShadowSpotlight;
-	CameraTracking Camera;
 	
 	@Override
 	public void create() {
@@ -36,7 +36,6 @@ public class GameStart implements ApplicationListener {
 		Levelgen = new MakeLevel(shap, Player1);
 			
 		ShadowSpotlight = new OverlayShadow();
-		Camera = new CameraTracking(cam);
 	}	
 
 	@Override
@@ -68,7 +67,7 @@ public class GameStart implements ApplicationListener {
 
 		// Up and Down camera movement. If the player gets within 120 pixels of
 		// them it moves.
-		if ((Player1.rec.y) > (cam.position.y + cam.viewportHeight / 3)) {
+		/*if ((Player1.rec.y) > (cam.position.y + cam.viewportHeight / 3)) {
 			Camera.MoveUp(Gdx.graphics.getDeltaTime());
 		}
 		if ((Player1.rec.y) < (cam.position.y - cam.viewportHeight / 3)) {
@@ -83,7 +82,7 @@ public class GameStart implements ApplicationListener {
 		// Right Side Camera Tracking
 		if (Player1.rec.x < (cam.position.x - cam.viewportWidth / 2.5)) {
 			Camera.MoveRight(Gdx.graphics.getDeltaTime());
-		}
+		}*/
 			
 			
 			
