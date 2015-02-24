@@ -51,6 +51,8 @@ public class MakeLevel {
 				list.add(new RectangleObj(0, 0, 800, 5, Color.BLACK));
 				//list.add(new RectangleObj(0, 475, 800, 5, Color.BLACK));
 			
+				
+			
 	}
 	
 	
