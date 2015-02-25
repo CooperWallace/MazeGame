@@ -28,6 +28,12 @@ public class RectangleObj {
 		shap.end();
 	}
 
+	public void SetArea(int Height, int Width) {
+		// Sets the Area of the object if it needs to be transformed
+		rec.height = Height;
+		rec.width = Width;
+	}
+	
 	public void setposition(float x, float y) {
 		// Sets the position of the block.
 		rec.x = x;

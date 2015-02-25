@@ -89,7 +89,7 @@ public class PlayerObj {
 		}
 	}
 
-	public void DrawRectangle(ShapeRenderer shap) {
+	public void RenderPlayer(ShapeRenderer shap) {
 		// This method is responsible for rendering the Player, and for
 		// Rendering the Hitboxes around the player.
 		// The hitboxes are a simple debug feature to make sure that they are

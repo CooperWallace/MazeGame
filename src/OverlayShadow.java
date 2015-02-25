@@ -1,6 +1,7 @@
 import Objects.PlayerObj;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -35,6 +36,7 @@ public class OverlayShadow {
 
 		// Begin the Rendering Sequence
 		shap.begin(ShapeType.Filled);
+		shap.setColor(Color.BLACK);
 		batch.begin();
 		
 		// The reason there are offsets to the X and Y coordinates is to make
@@ -59,10 +61,10 @@ public class OverlayShadow {
 		shap.rect(BGSprite.getX() + 256, BGSprite.getY(), 1024, 256);
 		
 		// Top Black Border
-		shap.rect(0, BGSprite.getY() + 256, 1024, 1024);
+		shap.rect(BGSprite.getX() - 1000, BGSprite.getY() + 256, 2000, 1024);
 		
 		//Bottom Black Border
-		shap.rect(0, BGSprite.getY() - 1024, 1024, 1024);
+		shap.rect(BGSprite.getY() - 1000, BGSprite.getY() - 1024, 2000, 1024);
 
 		// End the Rendering Sequence
 		batch.end();
